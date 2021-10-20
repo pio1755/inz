@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-&e=ah3l08n5cj_d$qd_8k3#tu8n08^x8x*djz#7a6^5yn55rsb
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['e-plannerplus.herokuapp.com/', '127.0.0.1']
 
 
 # Application definition
