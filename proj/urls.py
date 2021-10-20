@@ -23,7 +23,7 @@ from proj import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('favicon.ico', RedirectView.as_view(url=settings.STATIC_URL + 'images/favicon.ico')),
-    path('', TemplateView.as_view(template_name='base.html'),name='base'),
+    path('', TemplateView.as_view(template_name='base.html'), name='index'),
     path('admin/rosetta/', include('rosetta.urls')),
 
 ]
