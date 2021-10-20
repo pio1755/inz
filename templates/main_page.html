@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+
+{% block extra_css %}
+  <link href="{% static 'css/carousel.css' %}" rel="stylesheet" type="text/css"/>
+  <link rel="stylesheet" href="{% static 'unify/assets/vendor/slick-carousel/slick/slick.css' %}">
+{% endblock extra_css %}
+{% block content %}
+  <!-- Promo -->
+  <div class="margin-header"></div>
+  <div class="row vh100-header">
+    <div class="g-absolute-centered w-100">
+      <div class="container text-center g-width-780">
+        <div class="row info-v3-4 g-bg-primary-darkblue-opacity-v09 g-pa-40 g-pa-60--md justify-content-center">
+          <div class="col-12 g-pos-rel g-z-index-3">
+            <h2 class="h2 text-uppercase g-color-white g-letter-spacing-5 g-font-weight-400 g-font-size-25 g-font-size-35--md g-mb-20">
+              {{ settings.title }}</h2>
+            <p class="g-line-height-1_8 g-letter-spacing-3 g-color-white g-mb-20">{{ settings.short_intro }}
+          </div>
+          <div class="col-12 col-md-4 g-pos-rel g-z-index-3 mb-2">
+            <a href="{% url 'booking_form' %}"
+               class="btn text-uppercase u-btn-outline-white rounded-0 bp-btn">{% trans 'Book visit' %}</a>
+          </div>
+          <div class="col-12 col-md-4 g-pos-rel g-z-index-3 mb-2">
+            <a href="#our-workers"
+               class="btn text-uppercase u-btn-outline-white rounded-0 scroll bp-btn">{% trans 'See opinions' %}</a>
+          </div>
+          <div class="col-12 col-md-4 g-pos-rel g-z-index-3 mb-2">
+            <a href="#contact"
+               class="btn text-uppercase u-btn-outline-white rounded-0 scroll bp-btn">{% trans 'Contact' %}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Promo -->
+  <div id="our-workers" class="row vh100-header overflow-hidden g-bg-primary-blue">
+    <!-- Carousel -->
+    <div class="vw-100">
+      <div class="container text-center">
+        <h2 class="h2 mt-5 text-uppercase g-color-white g-letter-spacing-5 g-font-weight-400 g-font-size-25 g-font-size-35--md mb-4">
+          {{ settings.team_title }}
+        </h2>
+        <h3 class="h3 text-uppercase g-letter-spacing-3 g-font-size-default g-color-white g-mb-10">
+          {{ settings.team_top_subtitle }}
+        </h3>
+        <div class="row mx-auto my-auto">
+          <div id="myCarousel" class="carousel slide w-100" data-interval="false"
+               data-ride="carousel">
+            <div class="carousel-inner w-100" role="listbox">
+              {% for worker in workers %}
+                <div class="carousel-item">
+                  <div class="col-lg-2">
+                    {% if worker.description.photo %}
+                    <img class="g-width-120 g-height-120 rounded-circle mt-2"
+                         src="{{ worker.description.photo.url }}" value="{{ worker.id }}">
+                    {% endif %}
+                    <span class="text-white d-block mt-1">{{ worker.first_name }} {{ worker.last_name }}</span>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+            <a class="carousel-control-prev w-auto" href="#myCarousel" role="button"
+               data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next w-auto" href="#myCarousel" role="button"
+               data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+        </div>
+        <h5 class="mt-2 text-white">{{ settings.team_bottom_subtitle }}</h5>
+        <button id="redirect-booking" type="button"
+                class="btn text-uppercase u-btn-outline-white rounded-0"
+                data-form-url="{% url 'booking_form' %}">{% trans 'Book reservation' %}</button>
+      </div>
+      <!-- End Carousel -->
+      <div id="testimonials" data-url="{% url 'get_testimonials' %}">
+      </div>
+    </div>
+
+  </div>
+  <!-- Modal -->
+  <div class="modal fade" id="signUp" tabindex="-1" role="dialog"
+       aria-labelledby="signUpLabel" aria-hidden="true"
+       data-signup-url="{% url 'reservation_signup' %}"
+       data-login-url="{% url 'modal_login' %}">
+    <div class="modal-dialog" role="document">
+    </div>
+  </div>
+{% endblock %}
+{% block extra_js %}
+  <script>
+      let workers_number =
+      {{ workers|length }}
+  </script>
+  <script src="{% static 'js/carousel.js' %}"></script>
+  <!-- JS Workers carousel -->
+  <script src="{% static 'unify/assets/vendor/slick-carousel/slick/slick.js' %}"></script>
+  <script src="{% static 'unify/assets/js/components/hs.carousel.js' %}"></script>
+
+  <script>
+      let interval = undefined
+      const carouselInterval = () => {
+          interval = setInterval(() => {
+              $('.js-next').click();
+          }, 7000);
+      }
+
+      carouselInterval();
+      $('#our-workers').on('click', '#testimonials .js-carousel .u-arrow-v1', () => {
+          //go back to previous slide and reset time
+          clearInterval(interval);
+          carouselInterval();
+      });
+  </script>
+  <div id="modalAuthentication">
+    {% include 'user/user_modal_authentication.html' %}
+  </div>
+   {% block secondary_content %} {% endblock %}
+{% endblock extra_js %}
