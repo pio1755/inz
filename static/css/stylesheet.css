@@ -1,34 +1,39 @@
-nav{
 
-}
-nav ul {
+.navigation-bar ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #333;
+  background-color: #003366;
 }
 
-nav li {
+.navigation-bar li {
 
   float: right;
     border-right: 1px solid #bbb;
 
 }
 
-nav li a {
+.navigation-bar li a {
   display: block;
   color: white;
   text-align: center;
   padding: 25px 30px;
   text-decoration: none;
 }
-nav body{
-    background-color: #c4dce8;
-}
-nav li a:hover {
-  background-color: #111;
-}
-nav li:first-child {
+
+.navigation-bar li:first-child {
   border-right: none;
+}
+.navigation-bar .logo{
+    background-color: #003366;
+}
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: black;
+  color: white;
+  text-align: center;
 }
