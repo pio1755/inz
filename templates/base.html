@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-{% load static %}
+{% load static i18n %}
 
 <link href="{% static 'css/stylesheet.css' %}" rel="stylesheet">
 
@@ -10,21 +10,24 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>XDSSSSSSSSSSSSSSSS</title>
 </head>
 <body>
     <nav class="navigation-bar">
 <ul>
-    <li class="logo" style="float:left"><a href="#" ><b>e-planner+</b></a></li>
-        <li><a href="#">Logout</a></li>
-    <li><a href="#">Settings</a></li>
-      <li><a href="#">Plan</a></li>
-    <li><a href="#">Home Page</a></li>
+    <li class="logo" style="float:left"><a href={% url 'main_page' %} ><b>e-planner+</b></a></li>
+         {% if user.is_authenticated %}
+        <li><a href="{% url 'logout' %}">{% trans 'Sign out' %}</a></li>
+    {% else %}
+            <li><a href="{% url 'login' %}">{% trans 'Sign in' %}</a></li>
+    {% endif %}
+    <li><a href="{% url 'settings' %}">{% trans 'Settings' %}</a></li>
+      <li><a href="#">{% trans 'Plan' %}</a></li>
+    <li><a href="{% url 'main_page' %}">{% trans 'Home Page' %}</a></li>
 </ul>
+    </nav>
 
-    </nav>>
-    xDDDDDDDDDDDDDDDDd
-
+  {% block content %}
+  {% endblock %}
 
 <div class="footer">
   <p>created by: Piotr Kosiński</p>

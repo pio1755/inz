@@ -13,17 +13,24 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
 from django.urls import include
 from django.views.generic import TemplateView, RedirectView
+from django.contrib.auth import views as auth_views
 
+from planner.views import CustomSettingsUpdateView
 from proj import settings
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('favicon.ico', RedirectView.as_view(url=settings.STATIC_URL + 'images/favicon.ico')),
-    path('', TemplateView.as_view(template_name='base.html'), name='index'),
-    path('admin/rosetta/', include('rosetta.urls')),
+                  path('admin/', admin.site.urls),
+                  path('favicon.ico', RedirectView.as_view(url=settings.STATIC_URL + 'images/favicon.ico')),
+                  path('', TemplateView.as_view(template_name='main_page.html'), name='main_page'),
+                  path('admin/rosetta/', include('rosetta.urls')),
+                  path('plan/', CustomSettingsUpdateView.as_view(), name='plan'),
+                  path('settings/', CustomSettingsUpdateView.as_view(), name='settings'),
+                  path('login/', auth_views.LoginView.as_view(), name='login'),
+                  path('logout/', auth_views.LogoutView.as_view(), name='logout'),
 
-]
+              ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
