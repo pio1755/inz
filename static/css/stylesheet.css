@@ -1,12 +1,12 @@
 body{
 
-    background-color: blanchedalmond;
+    background-color: white;
 }
 
 nav{
     background-color:blueviolet;
 }
-body nav a {
-
+nav li {
+float: right;
 
 }
