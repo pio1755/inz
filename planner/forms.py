@@ -4,6 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.forms import ModelForm
 
+from accounts.models import CustomUser
 from .models import CustomSettings
 
 
@@ -14,18 +15,15 @@ class CustomSettingsForm(ModelForm):  # noqa: D101
 
         fields = '__all__'
 
+class CustomUserForm(ModelForm):  # noqa: D101
 
-class NewUserForm(UserCreationForm):
-    email = forms.EmailField(required=True)
+    class Meta:  # noqa: D106
+        model = CustomUser
 
-    class Meta:
-        User = get_user_model()
-        model = User
-        fields = ("username", "email", "password1", "password2")
-
-    def save(self, commit=True):
-        user = super(NewUserForm, self).save(commit=False)
-        user.email = self.cleaned_data['email']
-        if commit:
-            user.save()
-        return user
+        fields = [
+            'username',
+            'email',
+            'first_name',
+            'last_name',
+            'Class'
+        ]

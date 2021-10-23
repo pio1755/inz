@@ -21,7 +21,7 @@ from django.views.generic import TemplateView, RedirectView
 from django.contrib.auth import views as auth_views
 
 
-from planner.views import CustomSettingsUpdateView, register_request
+from planner.views import CustomSettingsUpdateView, register_request, CustomUserUpdateView
 from proj import settings
 
 urlpatterns = [
@@ -31,6 +31,7 @@ urlpatterns = [
                   path('admin/rosetta/', include('rosetta.urls')),
                   path('plan/', CustomSettingsUpdateView.as_view(), name='plan'),
                   path('settings/', CustomSettingsUpdateView.as_view(), name='settings'),
+                  path('settings/user_profile', CustomUserUpdateView.as_view(), name='user_profile'),
                   path('login/', auth_views.LoginView.as_view(), name='login'),
                   path('logout/', auth_views.LogoutView.as_view(), name='logout'),
                   path("register/", register_request, name='register')

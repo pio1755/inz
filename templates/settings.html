@@ -6,7 +6,7 @@
       <div class="navi">
 
 <ul>
-    <li><a class="active" href="{% url 'settings' %}">{% trans 'Settings' %}</a></li>
+    <li><a class="active" href="{% url 'user_profile' %}">{% trans 'User Profile' %}</a></li>
     <li><a href="{% url 'settings' %}">{% trans 'Settings' %}</a></li>
         <li><a href="/admin">{% trans 'Admin Panel' %}</a></li>
 </ul>
@@ -14,8 +14,8 @@
 
       <div class="field">
 
-
-xdddd
+  {% block settings_content %}
+  {% endblock %}
 
 
       </div>
