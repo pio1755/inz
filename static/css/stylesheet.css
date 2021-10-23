@@ -33,7 +33,45 @@
   left: 0;
   bottom: 0;
   width: 100%;
+  height: 3%;
   background-color: black;
+  opacity: 80%;
   color: white;
   text-align: center;
+}
+
+
+.navi ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 16%;
+  background-color: #205067;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+
+.navi li a {
+  display: block;
+  color: white;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+.navi li a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+.navi li a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+
+.field {
+
+  margin-left:16%;
+  padding:1px 16px;
+
 }
