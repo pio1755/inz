@@ -46,4 +46,5 @@ class CustomUserUpdateView(UpdateView):  # noqa: D101
     success_url = reverse_lazy('user_profile')
 
     def get_object(self, queryset=None):  # noqa: D102
+
         return self.model.objects.first()

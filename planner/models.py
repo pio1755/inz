@@ -3,6 +3,7 @@ from django.db import models
 
 from django.utils.translation import ugettext_lazy as _
 
+
 # Create your models here.
 
 class CustomSettings(models.Model):  # noqa: D101
@@ -24,4 +25,3 @@ class CustomSettings(models.Model):  # noqa: D101
         choices=TIME_INTERVAL,
         default=15,
     )
-

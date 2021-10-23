@@ -25,5 +25,6 @@ class CustomUserForm(ModelForm):  # noqa: D101
             'email',
             'first_name',
             'last_name',
-            'Class'
+            'Class',
+            'language',
         ]

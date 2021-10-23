@@ -30,7 +30,7 @@ class CustomUserAdmin(UserAdmin):
         }),
         ('Permissions', {
             'fields': (
-                'is_active', 'is_staff', 'is_planner', 'is_teacher', 'is_superuser', 'Class',
+                'is_active', 'is_staff', 'is_planner', 'is_teacher', 'is_superuser', 'Class', 'language'
                 'groups', 'user_permissions'
             )
         }),

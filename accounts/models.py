@@ -19,6 +19,12 @@ class CustomUser(AbstractUser):  # noqa: D101
         ['2B', '2B'],
         ['3C', '2C'],
     ]
+
+    LANG = [
+        ['pl', 'Polish'],
+        ['en-us', 'English'],
+
+    ]
     is_planner = models.BooleanField(default=False, verbose_name=_('Is planner'))
     is_teacher = models.BooleanField(default=False, verbose_name=_('Is teacher'))
 
@@ -27,4 +33,10 @@ class CustomUser(AbstractUser):  # noqa: D101
         choices=CLASS,
         default=1,
         max_length=2,
+    )
+    language = models.CharField(
+        _('Language'),
+        choices=LANG,
+        default=1,
+        max_length=5,
     )
