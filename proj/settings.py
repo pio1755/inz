@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'colorfield',
     'planner',
     'rosetta',
+    'bootstrapform',
 
 ]
 
@@ -57,7 +58,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
-
+    'django.middleware.locale.LocaleMiddleware',
 ]
 
 ROOT_URLCONF = 'proj.urls'
