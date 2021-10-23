@@ -12,6 +12,7 @@ from django.contrib.auth import login
 from django.contrib import messages
 
 
+
 def register_request(request):
     if request.method == "POST":
         form = NewUserForm(request.POST)

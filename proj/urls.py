@@ -25,7 +25,7 @@ from planner.views import CustomSettingsUpdateView, register_request
 from proj import settings
 
 urlpatterns = [
-                  path('admin/', admin.site.urls),
+                  path('admin/', admin.site.urls, name='panel_admin'),
                   path('favicon.ico', RedirectView.as_view(url=settings.STATIC_URL + 'images/favicon.ico')),
                   path('', TemplateView.as_view(template_name='main_page.html'), name='main_page'),
                   path('admin/rosetta/', include('rosetta.urls')),
@@ -33,6 +33,6 @@ urlpatterns = [
                   path('settings/', CustomSettingsUpdateView.as_view(), name='settings'),
                   path('login/', auth_views.LoginView.as_view(), name='login'),
                   path('logout/', auth_views.LogoutView.as_view(), name='logout'),
-                  path("register/", register_request, name="register")
+                  path("register/", register_request, name='register')
 
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

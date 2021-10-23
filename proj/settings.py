@@ -28,6 +28,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['e-plannerplus.herokuapp.com', '127.0.0.1']
 
+AUTH_USER_MODEL = 'accounts.CustomUser'
+
 
 # Application definition
 
@@ -38,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'accounts',
     'sorl.thumbnail',
     'colorfield',
     'planner',
