@@ -1,0 +1,40 @@
+#: .\planner\models.py:15
+msgid "Company name"
+msgstr ""
+
+#: .\planner\models.py:21
+msgid "Time Interval"
+msgstr ""
+
+#: .\proj\settings.py:124
+msgid "Polish"
+msgstr ""
+
+#: .\templates\base.html:22
+msgid "Sign out"
+msgstr ""
+
+#: .\templates\base.html:24 .\templates\registration\login.html:13
+msgid "Sign up"
+msgstr ""
+
+#: .\templates\base.html:25 .\templates\registration\login.html:12
+msgid "Sign in"
+msgstr ""
+
+#: .\templates\base.html:27 .\templates\settings.html:9
+#: .\templates\settings.html:10
+msgid "Settings"
+msgstr ""
+
+#: .\templates\base.html:28
+msgid "Plan"
+msgstr ""
+
+#: .\templates\base.html:29
+msgid "Home Page"
+msgstr ""
+
+#: .\templates\settings.html:11
+msgid "Admin Panel"
+msgstr ""
