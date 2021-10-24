@@ -59,11 +59,6 @@
   text-decoration: none;
 }
 
-.navi li a.active {
-  background-color: #04AA6D;
-  color: white;
-}
-
 .navi li a:hover:not(.active) {
   background-color: #555;
   color: white;
@@ -74,3 +69,4 @@
   margin-left: 16%;
   padding: 1px 16px;
 }
+

@@ -3,20 +3,52 @@
 
   {% block content %}
 
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="{% static 'css/naviset.css' %}" rel="stylesheet">
+
+
       <div class="navi">
 
 <ul>
-    <li><a class="active" href="{% url 'user_profile' %}">{% trans 'User Profile' %}</a></li>
+    <li><a href="{% url 'user_profile' %}">{% trans 'User Profile' %}</a></li>
+    <button class="dropdown-btn">{% trans 'Planner Panel' %}</button>
+  <div class="dropdown-container">
+      <li><a href="#">{% trans 'Class Panel' %}</a></li>
+      <li><a href="#">{% trans 'Rooms Panel' %}</a></li>
+      <li><a href="#">{% trans 'Lessons Panel' %}</a></li>
+  </div>
+
         <li><a href="/admin">{% trans 'Admin Panel' %}</a></li>
+
+
+{#    <div class="sidenav">#}
+{#  <a href="#about">About</a>#}
+{#  <a href="#services">Services</a>#}
+{#  <a href="#clients">Clients</a>#}
+{#  <a href="#contact">Contact</a>#}
+{#  <button class="dropdown-btn">Dropdown#}
+{#    <i class="fa fa-caret-down"></i>#}
+{#  </button>#}
+{#  <div class="dropdown-container">#}
+{#    <a href="#">Link 1</a>#}
+{#    <a href="#">Link 2</a>#}
+{#    <a href="#">Link 3</a>#}
+{#  </div>#}
+{#  <a href="#contact">Search</a>#}
+{#</div>#}
+<script src="{% static 'js/smenu.js' %}"></script>
+
+
 </ul>
       </div>
 
       <div class="field">
 
   {% block settings_content %}
+
+
   {% endblock %}
-
-
       </div>
 
 
