@@ -20,13 +20,13 @@
     <li class="logo" style="float:left"><a href={% url 'main_page' %} ><b>e-planner+</b></a></li>
          {% if user.is_authenticated %}
         <li><a href="{% url 'logout' %}">{% trans 'Sign out' %}</a></li>
+             <li><a href="{% url 'user_profile' %}">{% trans 'Settings' %}</a></li>
+      <li><a href="#">{% trans 'Plan' %}</a></li>
     {% else %}
              <li><a href="{% url 'register' %}">{% trans 'Sign up' %}</a></li>
             <li><a href="{% url 'login' %}">{% trans 'Sign in' %}</a></li>
     {% endif %}
 
-    <li><a href="{% url 'user_profile' %}">{% trans 'Settings' %}</a></li>
-      <li><a href="#">{% trans 'Plan' %}</a></li>
     <li><a href="{% url 'main_page' %}">{% trans 'Home Page' %}</a></li>
 </ul>
     </nav>
