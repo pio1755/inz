@@ -21,7 +21,8 @@ from django.views.generic import TemplateView, RedirectView
 from django.contrib.auth import views as auth_views
 
 
-from planner.views import CustomSettingsUpdateView, register_request, CustomUserUpdateView
+from planner.views import CustomSettingsUpdateView, register_request, CustomUserUpdateView, ClassView, ClassUpdateView, \
+    class_delete, RoomView, RoomUpdateView, room_delete
 from proj import settings
 
 urlpatterns = [
@@ -32,6 +33,12 @@ urlpatterns = [
                   path('plan/', CustomSettingsUpdateView.as_view(), name='plan'),
                   path('settings/', CustomSettingsUpdateView.as_view(), name='settings'),
                   path('settings/user_profile', CustomUserUpdateView.as_view(), name='user_profile'),
+                  path('settings/class_panel', ClassView.as_view(), name='class_panel'),
+                  path('settings/updateclass_panel/<int:pk>/', ClassUpdateView.as_view(), name='updateclass_panel'),
+                  path('remove_class/<int:pk>/', class_delete, name='class_delete'),
+                  path('settings/room_panel', RoomView.as_view(), name='room_panel'),
+                  path('settings/updateroom_panel/<int:pk>', RoomUpdateView.as_view(), name='updateroom_panel'),
+                  path('remove_room/<int:pk>/', room_delete, name='room_delete'),
                   path('login/', auth_views.LoginView.as_view(), name='login'),
                   path('logout/', auth_views.LogoutView.as_view(), name='logout'),
                   path("register/", register_request, name='register')

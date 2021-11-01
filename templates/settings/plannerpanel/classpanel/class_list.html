@@ -1,0 +1,35 @@
+{% load i18n %}
+
+<div class="col-12 col-lg-6">
+  <div id="class"
+       class="card mt-2 mb-2 shadow form hidden bg-transparent text-white"
+  >
+    <div class="card-header h4 bg-primary text-white">{% trans 'Class' %}</div>
+    <div id="service" class="card-body bg-light accordion">
+      <div class="card">
+        <div class="container-fluid">
+          {% for one in class_obj %}
+            <div class="row card-body text-white border-bottom">
+              <a class="col-6 text-black">{{ one.class_name }}</a>
+              <div class="col-6">
+                  <form>
+                  <button type="submit"
+                        class="btn btn-primary" formaction="{% url 'updateclass_panel' one.id %}"
+                        >{% trans 'Edit' %}
+                  <i class="fa fa-edit"></i></button>
+                                            {% csrf_token %}
+                  <button  type="submit" formaction="{% url 'class_delete' one.id %}" formmethod="post"
+                          class="btn btn-danger">{% trans 'Delete' %}
+                    <i class="fa fa-ban"></i></button>
+                </form>
+
+              </div>
+              <div id="ServiceList{{ one.id }}" class="col ml-3 mr-3 ">
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -8,6 +8,20 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.forms import CheckboxSelectMultiple
 
-from .models import CustomSettings
+from .models import CustomSettings, Class, Rooms
 
 admin.site.register(CustomSettings)
+
+
+@admin.register(Class)
+class ClassAdmin(admin.ModelAdmin):  # noqa: D101
+    list_display = [
+        'class_name',
+    ]
+
+
+@admin.register(Rooms)
+class RoomsAdmin(admin.ModelAdmin):  # noqa: D101
+    list_display = [
+        'room_name',
+    ]

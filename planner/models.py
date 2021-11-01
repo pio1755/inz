@@ -5,23 +5,40 @@ from django.utils.translation import ugettext_lazy as _
 
 
 # Create your models here.
-
-class CustomSettings(models.Model):  # noqa: D101
-
-    TIME_INTERVAL = [
-        [15, 15],
-        [30, 30],
-        [60, 60],
-    ]
-
-    company_name = models.CharField(
-        _('Company name'),
+class Class(models.Model):
+    class_name = models.CharField(
+        _('Class name'),
         max_length=255,
         blank=True,
         null=True,
+        default=None,
     )
-    time_interval = models.IntegerField(
-        _('Time Interval'),
-        choices=TIME_INTERVAL,
-        default=15,
+
+    def __str__(self):  # noqa: D105
+        return f'{self.class_name}'
+
+
+class Rooms(models.Model):
+    room_name = models.CharField(
+        _('Room Name'),
+        max_length=200,
+        blank=True,
+        null=True,
+    )
+
+    def __str__(self):  # noqa: D105
+        return f'{self.room_name}'
+
+
+class CustomSettings(models.Model):  # noqa: D101
+
+    LANG = [
+        ['pl', 'Polish'],
+        ['en-us', 'English'],
+    ]
+    language = models.CharField(
+        _('Language'),
+        choices=LANG,
+        default=1,
+        max_length=5,
     )
