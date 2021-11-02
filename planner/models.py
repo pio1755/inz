@@ -29,6 +29,15 @@ class Rooms(models.Model):
     def __str__(self):  # noqa: D105
         return f'{self.room_name}'
 
+class Lessons(models.Model):
+    lesson_name = models.CharField(
+        _('Lesson Name'),
+        max_length=200,
+        blank=True,
+        null=True,
+    )
+
+
 
 class CustomSettings(models.Model):  # noqa: D101
 
