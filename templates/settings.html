@@ -15,8 +15,9 @@
     <button class="dropdown-btn">{% trans 'Planner Panel' %}</button>
   <div class="dropdown-container">
       <li><a href="{% url 'class_panel' %}">{% trans 'Class Panel' %}</a></li>
+            <li><a href="#">{% trans 'Class Student Panel' %}</a></li>
       <li><a href="{% url 'room_panel' %}">{% trans 'Rooms Panel' %}</a></li>
-      <li><a href="#">{% trans 'Lessons Panel' %}</a></li>
+      <li><a href="{% url 'lesson_panel' %}">{% trans 'Lessons Panel' %}</a></li>
   </div>
 
         <li><a href="/admin">{% trans 'Admin Panel' %}</a></li>

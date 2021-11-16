@@ -7,8 +7,8 @@ from django.utils.decorators import method_decorator
 from django.views.generic import UpdateView, CreateView
 
 from accounts.forms import NewUserForm
-from .forms import CustomSettingsForm, CustomUserForm, ClassPanelForm, RoomsPanelForm
-from .models import CustomSettings, Class, Rooms
+from .forms import CustomSettingsForm, CustomUserForm, ClassPanelForm, RoomsPanelForm, LessonPanelForm
+from .models import CustomSettings, Class, Rooms, UserInClass, Lessons
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, get_user_model
 from django.contrib import messages
@@ -58,7 +58,9 @@ class CustomUserUpdateView(UpdateView):  # noqa: D101
     def get_context_data(self, **kwargs):  # noqa: D102
 
         context = super().get_context_data(**kwargs)
+        context['user'] = self.request.user
         context['settings'] = CustomSettings.objects.all()
+        context['class'] = Class.objects.all()
         return context
 
 
@@ -100,6 +102,7 @@ def class_delete(request, pk):  # noqa: D103
 
     return render(request, 'settings/plannerpanel/classpanel/class_list.html', {'cl': cl})
 
+
 class RoomView(CreateView):  # noqa: D101
 
     model = Rooms
@@ -137,3 +140,42 @@ def room_delete(request, pk):  # noqa: D103
         return redirect('/settings/room_panel')
 
     return render(request, 'settings/plannerpanel/roomspanel/room_list.html', {'cl': cl})
+
+
+class LessonView(CreateView):  # noqa: D101
+
+    model = Lessons
+    template_name = 'settings/plannerpanel/lessonspanel/lessonspanel.html'
+    form_class = LessonPanelForm
+    success_url = reverse_lazy('lesson_panel')
+
+    def get_context_data(self, **kwargs):  # noqa: D102
+
+        context = super().get_context_data(**kwargs)
+        context['lesson_obj'] = Lessons.objects.all()
+        return context
+
+
+class LessonUpdateView(UpdateView):  # noqa: D101
+
+    model = Lessons
+    template_name = 'settings/plannerpanel/lessonspanel/editlesson.html'
+    form_class = LessonPanelForm
+    success_url = reverse_lazy('lesson_panel')
+
+    def get_context_data(self, **kwargs):  # noqa: D102
+
+        context = super().get_context_data(**kwargs)
+        context['lesson_obj'] = Lessons.objects.all()
+        return context
+
+
+def lesson_delete(request, pk):  # noqa: D103
+
+    cl = get_object_or_404(Lessons, pk=pk)
+
+    if request.method == 'POST':
+        cl.delete()
+        return redirect('/settings/lesson_panel')
+
+    return render(request, 'settings/plannerpanel/lessonspanel/lesson_list.html', {'cl': cl})

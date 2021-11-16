@@ -3,18 +3,35 @@
 {% load static i18n %}
 
   {% block settings_content %}
+{##}
+{#<div class=" justify-content-center align-items-center" align="center">#}
+{#      <div class="card" style="width: 30rem;" align="left">#}
+{#  <div class="card-body bg-light">#}
+{#    <h5 class="card-body bg-primary">{% trans 'User profile' %}</h5>#}
+{#      <form method="post" >#}
+{#      {% csrf_token %}#}
+{#          {{ form|bootstrap }}#}
+{#      <button type="submit"  class="btn btn-primary">{% trans 'Save' %} <i class="far fa-save"></i></button>#}
+{#      </form>#}
+{#  </div>#}
+{#</div>#}
+{#</div>#}
+     <div align="center">
+      <div class="card" style="width: 30rem;" align="center">
+          <div class="card-header align-items-center h4 bg-primary text-white"  align="left">
 
-<div class=" justify-content-center align-items-center" align="center">
-      <div class="card" style="width: 30rem;" align="left">
-  <div class="card-body">
-    <h5 class="card-title">{% trans 'User profile' %}</h5>
-      <form method="post" >
-      {% csrf_token %}
-          {{ form|bootstrap }}
-      <button type="submit"  class="btn btn-primary">{% trans 'Save' %} <i class="far fa-save"></i></button>
-      </form>
-  </div>
+  {% trans 'User profile' %}
 </div>
+<div id="Class" class="card-body bg-light text-black" align="left">
+  <form method="post">
+    {% csrf_token %}
+    {{ form|bootstrap }}
+      <button type="submit"  class="btn btn-primary">{% trans 'Save' %}</button>
+    </button>
+  </form>
+</div>
+          </div>
+      </div>
 </div>
 
   {% endblock %}

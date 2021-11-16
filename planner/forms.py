@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django.forms import ModelForm
 
 from accounts.models import CustomUser
-from .models import CustomSettings, Class, Rooms
+from .models import CustomSettings, Class, Rooms, UserInClass, Lessons
 
 
 class CustomSettingsForm(ModelForm):  # noqa: D101
@@ -14,6 +14,7 @@ class CustomSettingsForm(ModelForm):  # noqa: D101
         model = CustomSettings
 
         fields = '__all__'
+
 
 class CustomUserForm(ModelForm):  # noqa: D101
 
@@ -25,8 +26,8 @@ class CustomUserForm(ModelForm):  # noqa: D101
             'email',
             'first_name',
             'last_name',
-            'Class',
         ]
+
 
 class ClassPanelForm(ModelForm):  # noqa: D101
 
@@ -35,9 +36,29 @@ class ClassPanelForm(ModelForm):  # noqa: D101
 
         fields = '__all__'
 
+
 class RoomsPanelForm(ModelForm):  # noqa: D101
 
     class Meta:  # noqa: D106
         model = Rooms
+
+        fields = '__all__'
+
+class LessonPanelForm(ModelForm):  # noqa: D101
+
+    class Meta:  # noqa: D106
+        model = Lessons
+
+        fields = '__all__'
+
+        # def __init__(self, *args, **kwargs):  # noqa: D107
+        #     super().__init__(*args, **kwargs)
+        #     self.fields['teacher'].label_from_instance = lambda obj: f'{obj.get_full_name()}'
+
+
+class UserInClass(ModelForm):  # noqa: D101
+
+    class Meta:  # noqa: D106
+        model = UserInClass
 
         fields = '__all__'

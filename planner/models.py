@@ -1,10 +1,15 @@
+import datetime
+
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.db.models import SET_NULL
 
 from django.utils.translation import ugettext_lazy as _
 
-
 # Create your models here.
+from accounts.models import CustomUser
+
+
 class Class(models.Model):
     class_name = models.CharField(
         _('Class name'),
@@ -29,6 +34,7 @@ class Rooms(models.Model):
     def __str__(self):  # noqa: D105
         return f'{self.room_name}'
 
+
 class Lessons(models.Model):
     lesson_name = models.CharField(
         _('Lesson Name'),
@@ -36,7 +42,57 @@ class Lessons(models.Model):
         blank=True,
         null=True,
     )
+    Class = models.ForeignKey(
+        Class,
+        blank=True,
+        null=True,
+        on_delete=SET_NULL,
+        related_name='Classes',
+    )
+    Room = models.ForeignKey(
+        Rooms,
+        blank=True,
+        null=True,
+        on_delete=SET_NULL,
+        related_name='Rooms',
+    )
+    Date_start = models.DateTimeField(
+        _('Date start'),
+        blank=True,
+        null=False,
+        default=datetime.datetime.now()
+    )
+    Date_stop = models.DateTimeField(
+        _('Date stop'),
+        blank=True,
+        null=False,
+        default=datetime.datetime.now()
+    )
+    Teacher = models.ForeignKey(
+        CustomUser,
+        blank=True,
+        null=True,
+        on_delete=models.SET_NULL,
+        related_name='teacher',
+        limit_choices_to={'is_teacher': True},
+    )
 
+
+class UserInClass(models.Model):
+    User = models.ForeignKey(
+        CustomUser,
+        blank=True,
+        null=True,
+        on_delete=models.CASCADE,
+        related_name='student',
+    )
+    Class = models.ForeignKey(
+        Class,
+        blank=True,
+        null=True,
+        on_delete=models.CASCADE,
+        related_name='classes',
+    )
 
 
 class CustomSettings(models.Model):  # noqa: D101
