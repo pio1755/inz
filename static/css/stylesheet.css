@@ -3,8 +3,11 @@
   list-style-type: none;
   margin: 0;
   padding: 0;
+    width: 100%;
   overflow: hidden;
   background-color: #003366;
+    position: static;
+
 }
 
 .navigation-bar li {
@@ -46,10 +49,13 @@
   margin: 0;
   padding: 0;
   width: 16%;
-  background-color: #205067;
-  position: fixed;
   height: 100%;
+  background-color: #205067;
+  position: absolute;
   overflow: auto;
+  vertical-align : middle;
+
+
 }
 
 .navi li a {

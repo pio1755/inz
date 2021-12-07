@@ -2,8 +2,7 @@
 
 <div class="col-12 col-lg-6">
   <div id="class"
-       class="card mt-2 mb-2 shadow form hidden bg-transparent text-white"
-  >
+       class="card mt-2 mb-2 shadow form hidden bg-transparent text-white">
     <div class="card-header h4 bg-primary text-white">{% trans 'Students' %}</div>
     <div id="service" class="card-body bg-light accordion">
       <div class="card">
@@ -22,11 +21,11 @@
                   <form>
                   <button type="submit"
                         class="btn btn-primary"
-                          formaction="{% url 'updateuic_panel' one.id %}">{% trans 'Edit' %}
+                          formaction="{% url 'updateuic_panel' usr.id %}">{% trans 'Edit' %}
                   <i class="fa fa-edit"></i></button>
                       {% csrf_token %}
-                  <button  type="submit" formaction="{% url 'uic_delete' one.id %}" formmethod="post"
-                          onclick="location.href='{% url 'uic_delete' one.id %}'"
+                  <button  type="submit" formaction="{% url 'uic_delete' usr.id %}" formmethod="post"
+                          onclick="location.href='{% url 'uic_delete' usr.id %}'"
 
                           class="btn btn-danger">{% trans 'Delete' %}
                     <i class="fa fa-ban"></i></button>

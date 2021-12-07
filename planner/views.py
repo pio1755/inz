@@ -153,6 +153,7 @@ class LessonView(CreateView):  # noqa: D101
 
         context = super().get_context_data(**kwargs)
         context['lesson_obj'] = Lessons.objects.all()
+        context['class_obj'] = Class.objects.all()
         return context
 
 
@@ -167,6 +168,7 @@ class LessonUpdateView(UpdateView):  # noqa: D101
 
         context = super().get_context_data(**kwargs)
         context['lesson_obj'] = Lessons.objects.all()
+        context['class_obj'] = Class.objects.all()
         return context
 
 
@@ -210,6 +212,7 @@ class UICUpdateView(UpdateView):  # noqa: D101
 
         context = super().get_context_data(**kwargs)
         context['uic_obj'] = UserInClass.objects.all()
+        context['class_obj'] = Class.objects.all()
         return context
 
 

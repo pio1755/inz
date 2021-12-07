@@ -1,8 +1,37 @@
 {% extends 'base.html' %}
 {% load static i18n %}
 
-  {% block content2 %}
+  <link href="{% static 'schedule/css/jquery-calendar.min.css' %}" rel="stylesheet"
+        type="text/css"/>
+  <link href="{% static 'css/schedule.css' %}" rel="stylesheet"
+        type="text/css"/>
 
-      xDDD   plannnnnnnnn
+{% block content %}
+  <div id="user-schedule-panel" class="container-fluid" data-url="{% url 'get_all_workers' %}"
+       data-schedules-url="{% url 'get_schedule' %}">
+    <div class="container-fluid px-4">
+      <div id="schedule" class="row" data-finish-reservation-url="{% url 'reservation_detail' %}">
+        <div class="col-xs-12 w-100">
+          <div id="calendar">
+          </div>
+          <div id="hourLine"></div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-  {% endblock %}
+ <!-- Modal -->
+  <div class="modal fade" id="scheduleModal" tabindex="-1" role="dialog"
+       aria-labelledby="visitModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+  <script src="{% static 'node_modules/moment/min/moment-with-locales.min.js' %}"></script>
+  <script src="{% static 'schedule/js/jquery.touchSwipe.min.js' %}"></script>
+  <script src="{% static 'schedule/js/jquery-calendar.js' %}"></script>
+  <script src="{% static 'js/all_schedulers.js' %}"></script>
