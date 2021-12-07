@@ -4,31 +4,39 @@
   <div id="class"
        class="card mt-2 mb-2 shadow form hidden bg-transparent text-white"
   >
-    <div class="card-header h4 bg-primary text-white">{% trans 'Rooms' %}</div>
+    <div class="card-header h4 bg-primary text-white">{% trans 'Students' %}</div>
     <div id="service" class="card-body bg-light accordion">
       <div class="card">
         <div class="container-fluid">
-          {% for one in room_obj %}
+          {% for one in class_obj %}
+
+              <div class="card h5 row card-body text-white bg-primary">
+                  <a class=" text-white">{{ one.class_name }}</a>
+              </div>
+
+            {% for usr in uic_obj %}
+                {% if one.class_name == usr.Class.class_name %}
             <div class="row card-body text-white border-bottom">
-              <a class="col-6 text-black">{{ one.room_name }}</a>
+              <a class="col-6 text-black">{{ usr.User }}</a>
               <div class="col-6">
                   <form>
                   <button type="submit"
                         class="btn btn-primary"
-                          formaction="{% url 'updateroom_panel' one.id %}">{% trans 'Edit' %}
+                          formaction="{% url 'updateuic_panel' one.id %}">{% trans 'Edit' %}
                   <i class="fa fa-edit"></i></button>
                       {% csrf_token %}
-                  <button  type="submit" formaction="{% url 'room_delete' one.id %}" formmethod="post"
-                          onclick="location.href='{% url 'room_delete' one.id %}'"
+                  <button  type="submit" formaction="{% url 'uic_delete' one.id %}" formmethod="post"
+                          onclick="location.href='{% url 'uic_delete' one.id %}'"
 
                           class="btn btn-danger">{% trans 'Delete' %}
                     <i class="fa fa-ban"></i></button>
                 </form>
 
               </div>
-              <div id="RoomList{{ one.id }}" class="col ml-3 mr-3 ">
-              </div>
+
             </div>
+                {% endif %}
+          {% endfor %}
           {% endfor %}
         </div>
       </div>

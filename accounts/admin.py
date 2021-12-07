@@ -19,7 +19,7 @@ from .models import CustomUser
 class CustomUserAdmin(UserAdmin):
     list_display = (
         'username', 'email', 'first_name', 'last_name', 'is_staff',
-        'is_planner', 'is_teacher',
+        'is_planner', 'is_teacher', 'is_student',
     )
     fieldsets = (
         (None, {
@@ -30,7 +30,7 @@ class CustomUserAdmin(UserAdmin):
         }),
         ('Permissions', {
             'fields': (
-                'is_active', 'is_staff', 'is_planner', 'is_teacher', 'is_superuser',
+                'is_active', 'is_staff', 'is_planner', 'is_teacher', 'is_student', 'is_superuser',
                 'groups', 'user_permissions'
             )
         }),
@@ -56,7 +56,7 @@ class CustomUserAdmin(UserAdmin):
             'fields': ('last_login', 'date_joined')
         }),
         ('Additional info', {
-            'fields': ('is_planner', 'is_teacher')
+            'fields': ('is_planner', 'is_teacher', 'is_student')
         })
     )
 

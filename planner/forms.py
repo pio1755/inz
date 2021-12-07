@@ -56,9 +56,18 @@ class LessonPanelForm(ModelForm):  # noqa: D101
         #     self.fields['teacher'].label_from_instance = lambda obj: f'{obj.get_full_name()}'
 
 
-class UserInClass(ModelForm):  # noqa: D101
+class UserInClassForm(ModelForm):  # noqa: D101
 
     class Meta:  # noqa: D106
         model = UserInClass
+        #
+        # def __init__(self, *args, **kwargs):  # noqa: D107
+        #     super().__init__(*args, **kwargs)
+        #     self.fields['User'].queryset = UserInClass.objects.filter(Class__isnull=True)
 
-        fields = '__all__'
+        fields = [
+            'User',
+            'Class',
+        ]
+
+

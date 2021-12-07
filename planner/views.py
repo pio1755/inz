@@ -7,7 +7,7 @@ from django.utils.decorators import method_decorator
 from django.views.generic import UpdateView, CreateView
 
 from accounts.forms import NewUserForm
-from .forms import CustomSettingsForm, CustomUserForm, ClassPanelForm, RoomsPanelForm, LessonPanelForm
+from .forms import CustomSettingsForm, CustomUserForm, ClassPanelForm, RoomsPanelForm, LessonPanelForm, UserInClassForm
 from .models import CustomSettings, Class, Rooms, UserInClass, Lessons
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, get_user_model
@@ -179,3 +179,46 @@ def lesson_delete(request, pk):  # noqa: D103
         return redirect('/settings/lesson_panel')
 
     return render(request, 'settings/plannerpanel/lessonspanel/lesson_list.html', {'cl': cl})
+
+
+class UICView(CreateView):  # noqa: D101
+
+    model = UserInClass
+    template_name = 'settings/plannerpanel/UserInClass/uicpanel.html'
+    form_class = UserInClassForm
+    success_url = reverse_lazy('uic_panel')
+
+
+
+    def get_context_data(self, **kwargs):  # noqa: D102
+
+        context = super().get_context_data(**kwargs)
+        context['uic_obj'] = UserInClass.objects.all()
+        context['class_obj'] = Class.objects.all()
+
+        return context
+
+
+class UICUpdateView(UpdateView):  # noqa: D101
+
+    model = UserInClass
+    template_name = 'settings/plannerpanel/UserInClass/edituic.html'
+    form_class = UserInClassForm
+    success_url = reverse_lazy('uic_panel')
+
+    def get_context_data(self, **kwargs):  # noqa: D102
+
+        context = super().get_context_data(**kwargs)
+        context['uic_obj'] = UserInClass.objects.all()
+        return context
+
+
+def uic_delete(request, pk):  # noqa: D103
+
+    cl = get_object_or_404(UserInClass, pk=pk)
+
+    if request.method == 'POST':
+        cl.delete()
+        return redirect('/settings/uic_panel')
+
+    return render(request, 'settings/plannerpanel/UserInClass/uic_list.html', {'cl': cl})

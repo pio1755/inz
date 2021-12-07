@@ -14,6 +14,7 @@ from colorfield.fields import ColorField
 
 class CustomUser(AbstractUser):  # noqa: D101
 
+    is_student = models.BooleanField(default=False, verbose_name=_('Is student'))
     is_planner = models.BooleanField(default=False, verbose_name=_('Is planner'))
     is_teacher = models.BooleanField(default=False, verbose_name=_('Is teacher'))
 

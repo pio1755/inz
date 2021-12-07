@@ -22,7 +22,8 @@ from django.contrib.auth import views as auth_views
 
 
 from planner.views import CustomSettingsUpdateView, register_request, CustomUserUpdateView, ClassView, ClassUpdateView, \
-    class_delete, RoomView, RoomUpdateView, room_delete, LessonView, LessonUpdateView, lesson_delete
+    class_delete, RoomView, RoomUpdateView, room_delete, LessonView, LessonUpdateView, lesson_delete, UICView, \
+    UICUpdateView, uic_delete
 from proj import settings
 
 urlpatterns = [
@@ -43,6 +44,10 @@ urlpatterns = [
                   path('settings/lesson_panel', LessonView.as_view(), name='lesson_panel'),
                   path('settings/updatelesson_panel/<int:pk>', LessonUpdateView.as_view(), name='updatelesson_panel'),
                   path('remove_lesson/<int:pk>/', lesson_delete, name='lesson_delete'),
+
+                  path('settings/uic_panel', UICView.as_view(), name='uic_panel'),
+                  path('settings/updateuic_panel/<int:pk>', UICUpdateView.as_view(), name='updateuic_panel'),
+                  path('remove_uic/<int:pk>/', uic_delete, name='uic_delete'),
 
                   path('login/', auth_views.LoginView.as_view(), name='login'),
                   path('logout/', auth_views.LogoutView.as_view(), name='logout'),

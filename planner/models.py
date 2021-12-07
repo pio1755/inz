@@ -79,18 +79,19 @@ class Lessons(models.Model):
 
 
 class UserInClass(models.Model):
-    User = models.ForeignKey(
+    User = models.OneToOneField(
         CustomUser,
         blank=True,
         null=True,
-        on_delete=models.CASCADE,
+        on_delete=models.SET_NULL,
         related_name='student',
+        limit_choices_to={'is_student': True},
     )
     Class = models.ForeignKey(
         Class,
         blank=True,
         null=True,
-        on_delete=models.CASCADE,
+        on_delete=models.SET_NULL,
         related_name='classes',
     )
 
