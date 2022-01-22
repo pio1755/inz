@@ -8,20 +8,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-11 16:53+0100\n"
-"PO-Revision-Date: 2022-01-11 16:59+0000\n"
+"POT-Creation-Date: 2021-12-23 00:26+0100\n"
+"PO-Revision-Date: 2021-12-23 00:32+0000\n"
 "Last-Translator: b'Admin Admin <admin@admin.pl>'\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 "X-Translated-Using: django-rosetta 0.9.4\n"
 
 #: .\accounts\models.py:17
 msgid "Is student"
-msgstr "Jest studentem"
+msgstr "Jest uczniem"
 
 #: .\accounts\models.py:18
 msgid "Is planner"
@@ -33,30 +32,25 @@ msgstr "Jest nauczycielem"
 
 #: .\planner\models.py:15
 msgid "Class name"
-msgstr "Nazwa Klasy"
+msgstr "Nazwa klasy"
 
-#: .\planner\models.py:26
-#: .\templates\settings\plannerpanel\classpanel\class_list.html:7
-msgid "Class"
-msgstr "Klasa"
-
-#: .\planner\models.py:31
+#: .\planner\models.py:28
 msgid "Room Name"
 msgstr "Nazwa sali"
 
-#: .\planner\models.py:43
+#: .\planner\models.py:40
 msgid "Lesson Name"
 msgstr "Nazwa lekcji"
 
-#: .\planner\models.py:63
+#: .\planner\models.py:60
 msgid "Date start"
-msgstr "Data rozpoczęcia"
+msgstr "Początek"
 
-#: .\planner\models.py:69
+#: .\planner\models.py:66
 msgid "Date stop"
-msgstr "Data zakończenia"
+msgstr "Koniec"
 
-#: .\planner\models.py:109
+#: .\planner\models.py:106
 msgid "Language"
 msgstr "Język"
 
@@ -98,11 +92,11 @@ msgstr "Panel planisty"
 
 #: .\templates\settings.html:17
 msgid "Class Panel"
-msgstr "Panel klasy"
+msgstr "Panel klas"
 
 #: .\templates\settings.html:18
 msgid "Class Student Panel"
-msgstr "Panel dodaj ucznia"
+msgstr "Panel uczniów"
 
 #: .\templates\settings.html:19
 msgid "Rooms Panel"
@@ -110,11 +104,11 @@ msgstr "Panel sal"
 
 #: .\templates\settings.html:20
 msgid "Lessons Panel"
-msgstr "Panel lekcyjny"
+msgstr "Panel lekcji"
 
 #: .\templates\settings.html:23
 msgid "Admin Panel"
-msgstr "Panel administratora"
+msgstr "Panel administracyjny"
 
 #: .\templates\settings\plannerpanel\UserInClass\add_form.html:3
 msgid "Add student to class"
@@ -129,7 +123,7 @@ msgstr "Utwórz"
 
 #: .\templates\settings\plannerpanel\UserInClass\edit_form.html:3
 msgid "Edit user in class"
-msgstr "Edytuj użytkownika w klasie"
+msgstr "Edytuj ucznia w klasie"
 
 #: .\templates\settings\plannerpanel\UserInClass\edit_form.html:9
 #: .\templates\settings\plannerpanel\UserInClass\uic_list.html:24
@@ -157,9 +151,13 @@ msgstr "Usuń"
 msgid "Create Class"
 msgstr "Utwórz klasę"
 
+#: .\templates\settings\plannerpanel\classpanel\class_list.html:7
+msgid "Class"
+msgstr "Klasa"
+
 #: .\templates\settings\plannerpanel\classpanel\edit_form.html:3
 msgid "Edit Class"
-msgstr "Edytuj klasę"
+msgstr "Edytuj Klasę"
 
 #: .\templates\settings\plannerpanel\lessonspanel\add_form.html:3
 msgid "Add Lesson"
@@ -175,11 +173,11 @@ msgstr "Lekcje"
 
 #: .\templates\settings\plannerpanel\lessonspanel\lesson_list.html:20
 msgid "Room: "
-msgstr "Sala: "
+msgstr "Sala:"
 
 #: .\templates\settings\plannerpanel\lessonspanel\lesson_list.html:21
 msgid "Date: "
-msgstr "Data: "
+msgstr "Data"
 
 #: .\templates\settings\plannerpanel\lessonspanel\lesson_list.html:22
 msgid "Teacher: "
@@ -204,3 +202,6 @@ msgstr "Profil użytkownika"
 #: .\templates\settings\user_profile.html:29
 msgid "Save"
 msgstr "Zapisz"
+
+#~ msgid "Teacher"
+#~ msgstr "Nauczyciel: "

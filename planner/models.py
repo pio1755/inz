@@ -22,6 +22,9 @@ class Class(models.Model):
     def __str__(self):  # noqa: D105
         return f'{self.class_name}'
 
+    class Meta:  # noqa: D106
+        verbose_name = _('Class')
+
 
 class Rooms(models.Model):
     room_name = models.CharField(
