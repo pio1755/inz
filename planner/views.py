@@ -1,10 +1,11 @@
 from django.contrib.auth.decorators import login_required
+from django.http import JsonResponse, Http404
 from django.shortcuts import render, get_object_or_404
 
 # Create your views here.
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
-from django.views.generic import UpdateView, CreateView
+from django.views.generic import UpdateView, CreateView, TemplateView
 
 from accounts.forms import NewUserForm
 from .forms import CustomSettingsForm, CustomUserForm, ClassPanelForm, RoomsPanelForm, LessonPanelForm, UserInClassForm
@@ -12,7 +13,7 @@ from .models import CustomSettings, Class, Rooms, UserInClass, Lessons
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, get_user_model
 from django.contrib import messages
-from accounts.models import CustomUser
+
 
 
 def register_request(request):
@@ -225,3 +226,14 @@ def uic_delete(request, pk):  # noqa: D103
         return redirect('/settings/uic_panel')
 
     return render(request, 'settings/plannerpanel/UserInClass/uic_list.html', {'cl': cl})
+
+class AllSchedulersView(TemplateView):  # noqa: D101
+    template_name = 'plan.html'
+    model = Lessons
+    success_url = reverse_lazy('plan')
+
+    def get_context_data(self, **kwargs):  # noqa: D102
+
+        context = super().get_context_data(**kwargs)
+        context['lessons'] = Lessons.objects.all()
+        return context

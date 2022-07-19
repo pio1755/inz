@@ -29,17 +29,17 @@ class RoomsAdmin(admin.ModelAdmin):  # noqa: D101
 @admin.register(UserInClass)
 class RoomsAdmin(admin.ModelAdmin):  # noqa: D101
     list_display = [
-        'User',
-        'Class',
+        'Uczen',
+        'Klasa',
     ]
 
 @admin.register(Lessons)
 class RoomsAdmin(admin.ModelAdmin):  # noqa: D101
     list_display = [
         'lesson_name',
-        'Class',
-        'Room',
+        'Klasa',
+        'Sala',
         'Date_start',
         'Date_stop',
-        'Teacher',
+        'Nauczyciel',
     ]

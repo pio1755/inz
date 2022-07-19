@@ -19,6 +19,7 @@
     <orderEntry type="library" name="bootstrap" level="application" />
     <orderEntry type="library" name="2f3110e6e3" level="application" />
     <orderEntry type="library" name="font-awesome" level="application" />
+    <orderEntry type="library" name="arrobefr-jquery-calendar-bs4" level="application" />
   </component>
   <component name="TemplatesService">
     <option name="TEMPLATE_CONFIGURATION" value="Django" />

@@ -1,4 +1,6 @@
-
+html, body{
+  height: 100%;
+}
 .navigation-bar ul {
   list-style-type: none;
   margin: 0;
@@ -33,6 +35,7 @@
 }
 .footer {
   position: fixed;
+  z-index: 99;
   left: 0;
   bottom: 0;
   width: 100%;
@@ -49,7 +52,7 @@
   margin: 0;
   padding: 0;
   width: 16%;
-  height: 100%;
+  height: 100vw;
   background-color: #205067;
   position: absolute;
   overflow: auto;
@@ -79,4 +82,7 @@
 .createService {
 background-color: #79aec8;
 
+}
+.calendar-event{
+  text-align: center;
 }

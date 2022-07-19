@@ -12,7 +12,7 @@ from accounts.models import CustomUser
 
 class Class(models.Model):
     class_name = models.CharField(
-        _('Class name'),
+        verbose_name=_('Klasa'),
         max_length=255,
         blank=True,
         null=True,
@@ -23,12 +23,12 @@ class Class(models.Model):
         return f'{self.class_name}'
 
     class Meta:  # noqa: D106
-        verbose_name = _('Class')
+        verbose_name = _('Klasa')
 
 
 class Rooms(models.Model):
     room_name = models.CharField(
-        _('Room Name'),
+        _('Sala'),
         max_length=200,
         blank=True,
         null=True,
@@ -40,19 +40,19 @@ class Rooms(models.Model):
 
 class Lessons(models.Model):
     lesson_name = models.CharField(
-        _('Lesson Name'),
+        _('Lekcja'),
         max_length=200,
         blank=True,
         null=True,
     )
-    Class = models.ForeignKey(
+    Klasa = models.ForeignKey(
         Class,
         blank=True,
         null=True,
         on_delete=SET_NULL,
         related_name='Classes',
     )
-    Room = models.ForeignKey(
+    Sala = models.ForeignKey(
         Rooms,
         blank=True,
         null=True,
@@ -71,7 +71,7 @@ class Lessons(models.Model):
         null=False,
         default=datetime.datetime.now()
     )
-    Teacher = models.ForeignKey(
+    Nauczyciel = models.ForeignKey(
         CustomUser,
         blank=True,
         null=True,
@@ -80,9 +80,14 @@ class Lessons(models.Model):
         limit_choices_to={'is_teacher': True},
     )
 
+    def changeYear(self):
+        return datetime.datetime.strptime(str(self.Date_start),"%Y-%m-%d %H:%M:%S%z").strftime("%Y/%m/%d %H:%M:%S%z")
+    def changeYearOver(self):
+        return datetime.datetime.strptime(str(self.Date_stop),"%Y-%m-%d %H:%M:%S%z").strftime("%Y/%m/%d %H:%M:%S%z")
+
 
 class UserInClass(models.Model):
-    User = models.OneToOneField(
+    Uczen = models.OneToOneField(
         CustomUser,
         blank=True,
         null=True,
@@ -90,7 +95,7 @@ class UserInClass(models.Model):
         related_name='student',
         limit_choices_to={'is_student': True},
     )
-    Class = models.ForeignKey(
+    Klasa = models.ForeignKey(
         Class,
         blank=True,
         null=True,

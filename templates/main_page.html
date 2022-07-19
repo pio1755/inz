@@ -15,3 +15,18 @@
       </div>
 
   {% endblock %}
+
+{% block  foo %}
+
+    <div class="footer">
+  <p>created by: Piotr Kosiński</p>
+</div>
+    {% endblock %}
+{% block extra_js %}
+  <!-- Scheduler JS -->
+  <script src="{% static 'jquery-schedule/dist/jquery.schedule.js' %}"></script>
+  <script src="{% static 'js/user_panel.js' %}"></script>
+  {% block user_panel_extra_js %}
+  {% endblock user_panel_extra_js %}
+{% endblock extra_js %}
+

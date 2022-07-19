@@ -14,12 +14,12 @@
               </div>
 
             {% for les in lesson_obj %}
-                {% if one.class_name == les.Class.class_name %}
+                {% if one.class_name == les.Klasa.class_name %}
             <div class="row card-body text-white border-bottom">
               <a class="col-6 text-black">{{ les.lesson_name }}<br>
-                {% trans 'Room: ' %}{{ les.Room }}<br>
+                {% trans 'Room: ' %}{{ les.Sala }}<br>
                {% trans 'Date: ' %}{{ les.Date_start }}<br>
-                  {% trans 'Teacher: ' %}{{ les.Teacher }}</a>
+                  {% trans 'Teacher: ' %}{{ les.Nauczyciel }}</a>
 
               <div class="col-6">
                   <form>

@@ -20,10 +20,9 @@ from django.urls import include
 from django.views.generic import TemplateView, RedirectView
 from django.contrib.auth import views as auth_views
 
-
 from planner.views import CustomSettingsUpdateView, register_request, CustomUserUpdateView, ClassView, ClassUpdateView, \
     class_delete, RoomView, RoomUpdateView, room_delete, LessonView, LessonUpdateView, lesson_delete, UICView, \
-    UICUpdateView, uic_delete
+    UICUpdateView, uic_delete, AllSchedulersView
 from proj import settings
 
 urlpatterns = [
@@ -31,7 +30,9 @@ urlpatterns = [
                   path('favicon.ico', RedirectView.as_view(url=settings.STATIC_URL + 'images/favicon.ico')),
                   path('', TemplateView.as_view(template_name='main_page.html'), name='main_page'),
                   path('admin/rosetta/', include('rosetta.urls')),
-                  path('plan/', CustomSettingsUpdateView.as_view(), name='plan'),
+                  path('plan/', AllSchedulersView.as_view(), name='plan'),
+
+
                   path('settings/', CustomSettingsUpdateView.as_view(), name='settings'),
                   path('settings/user_profile', CustomUserUpdateView.as_view(), name='user_profile'),
                   path('settings/class_panel', ClassView.as_view(), name='class_panel'),
@@ -53,4 +54,5 @@ urlpatterns = [
                   path('logout/', auth_views.LogoutView.as_view(), name='logout'),
                   path("register/", register_request, name='register')
 
-              ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+              ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) \
+                + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

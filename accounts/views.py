@@ -1,8 +1,9 @@
 from django.urls import reverse_lazy
-from django.views.generic import UpdateView
-
+from django.views.generic import UpdateView, TemplateView
 
 from django.shortcuts import render, redirect
+
+from planner.models import Lessons
 from .forms import NewUserForm
 from django.contrib.auth import login
 from django.contrib import messages
@@ -18,3 +19,7 @@ def register_request(request):
         messages.error(request, "Unsuccessful registration. Invalid information.")
     form = NewUserForm()
     return render(request=request, template_name="registration/register.html", context={"register_form": form})
+
+
+
+

@@ -1,37 +1,101 @@
 {% extends 'base.html' %}
-{% load static i18n %}
+{% load static i18n%}
+  {% block content %}
+  <script>
+    $(document).ready(function(){
+      moment.locale('en');
+      var now = moment();
 
-  <link href="{% static 'schedule/css/jquery-calendar.min.css' %}" rel="stylesheet"
-        type="text/css"/>
-  <link href="{% static 'css/schedule.css' %}" rel="stylesheet"
-        type="text/css"/>
+      /**
+       * Many events
+       */
+      var events = [
+          {% for lesson in lessons %}
+        {
+          start: ((moment(new Date('{{lesson.changeYear}}')))).unix().toString(),
+          end: (moment(new Date('{{lesson.changeYearOver}}'))).unix().toString(),
+          title: '{{lesson.lesson_name}}',
+          content: '{{lesson.lesson_name}} <br> sala: {{ lesson.Sala }} <br>  nauczyciel: {{ lesson.Nauczyciel }}',
+          category:'{{lesson.Klasa}}'
+        },
+          {% endfor %}
 
-{% block content %}
-  <div id="user-schedule-panel" class="container-fluid" data-url="{% url 'get_all_workers' %}"
-       data-schedules-url="{% url 'get_schedule' %}">
-    <div class="container-fluid px-4">
-      <div id="schedule" class="row" data-finish-reservation-url="{% url 'reservation_detail' %}">
-        <div class="col-xs-12 w-100">
-          <div id="calendar">
-          </div>
-          <div id="hourLine"></div>
-        </div>
+]
+
+      /**
+       * A daynote
+       */
+      var daynotes = [
+
+      ];
+
+      /**
+       * Init the calendar
+       */
+      var calendar = $('#calendar').Calendar({
+        locale: 'en',
+        weekday: {
+          timeline: {
+            intervalMinutes: 30,
+            fromHour: 9
+          }
+        },
+        events: events,
+        daynotes: daynotes
+      }).init();
+
+      /**
+       * Listening for events
+       */
+
+      $('#calendar').on('Calendar.init', function(event, instance, before, current, after){
+        console.log('event : Calendar.init');
+        console.log(instance);
+        console.log(before);
+        console.log(current);
+        console.log(after);
+      });
+      $('#calendar').on('Calendar.daynote-mouseenter', function(event, instance, elem){
+        console.log('event : Calendar.daynote-mouseenter');
+        console.log(instance);
+        console.log(elem);
+      });
+      $('#calendar').on('Calendar.daynote-mouseleave', function(event, instance, elem){
+        console.log('event : Calendar.daynote-mouseleave');
+        console.log(instance);
+        console.log(elem);
+      });
+      $('#calendar').on('Calendar.event-mouseenter', function(event, instance, elem){
+        console.log('event : Calendar.event-mouseenter');
+        console.log(instance);
+        console.log(elem);
+      });
+      $('#calendar').on('Calendar.event-mouseleave', function(event, instance, elem){
+        console.log('event : Calendar.event-mouseleave');
+        console.log(instance);
+        console.log(elem);
+      });
+      $('#calendar').on('Calendar.daynote-click', function(event, instance, elem, evt){
+        console.log('event : Calendar.daynote-click');
+        console.log(instance);
+        console.log(elem);
+        console.log(evt);
+      });
+      $('#calendar').on('Calendar.event-click', function(event, instance, elem, evt){
+        console.log('event : Calendar.event-click');
+        console.log(instance);
+        console.log(elem);
+        console.log(evt);
+      });
+    });
+  </script>
+
+  <div class="container-fluid px-4">
+    <div class="row">
+      <div class="col-xs-12">
+        <h1> </h1>
+        <div id="calendar"></div>
       </div>
     </div>
   </div>
-
- <!-- Modal -->
-  <div class="modal fade" id="scheduleModal" tabindex="-1" role="dialog"
-       aria-labelledby="visitModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-
-      </div>
-    </div>
-  </div>
-{% endblock %}
-
-  <script src="{% static 'node_modules/moment/min/moment-with-locales.min.js' %}"></script>
-  <script src="{% static 'schedule/js/jquery.touchSwipe.min.js' %}"></script>
-  <script src="{% static 'schedule/js/jquery-calendar.js' %}"></script>
-  <script src="{% static 'js/all_schedulers.js' %}"></script>
+{% endblock content %}

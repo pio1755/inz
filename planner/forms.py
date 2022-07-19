@@ -66,8 +66,6 @@ class UserInClassForm(ModelForm):  # noqa: D101
         #     self.fields['User'].queryset = UserInClass.objects.filter(Class__isnull=True)
 
         fields = [
-            'User',
-            'Class',
+            'Uczen',
+            'Klasa',
         ]
-
-
