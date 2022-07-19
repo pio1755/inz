@@ -1,0 +1,13 @@
+{% load i18n %}
+<div class="card-header h4 bg-primary">
+  {% trans 'Add student to class' %}
+</div>
+<div id="Class" class="card-body bg-light text-black">
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+      <button type="submit"  class="btn btn-primary">{% trans 'Create' %}</button>
+    </button>
+  </form>
+</div>
+</div>

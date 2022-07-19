@@ -1,0 +1,46 @@
+{% load i18n %}
+
+<div class="col-12 col-lg-6">
+  <div id="class"
+       class="card mt-2 mb-2 shadow form hidden bg-transparent text-white">
+    <div class="card-header h4 bg-primary text-white">{% trans 'Lessons' %}</div>
+    <div id="service" class="card-body bg-light accordion">
+      <div class="card">
+        <div class="container-fluid">
+          {% for one in class_obj %}
+
+              <div class="card h5 row card-body text-white bg-primary">
+                  <a class=" text-white">{{ one.class_name }}</a>
+              </div>
+
+            {% for les in lesson_obj %}
+                {% if one.class_name == les.Klasa.class_name %}
+            <div class="row card-body text-white border-bottom">
+              <a class="col-6 text-black">{{ les.lesson_name }}<br>
+                {% trans 'Room: ' %}{{ les.Sala }}<br>
+               {% trans 'Date: ' %}{{ les.Date_start }}<br>
+                  {% trans 'Teacher: ' %}{{ les.Nauczyciel }}</a>
+
+              <div class="col-6">
+                  <form>
+                  <button type="submit"
+                        class="btn btn-primary"
+                          formaction="{% url 'updatelesson_panel' les.id %}">{% trans 'Edit' %}
+                  <i class="fa fa-edit"></i></button>
+                      {% csrf_token %}
+                  <button  type="submit" formaction="{% url 'lesson_delete' les.id %}" formmethod="post"
+                          onclick="location.href='{% url 'lesson_delete' les.id %}'"
+
+                          class="btn btn-danger">{% trans 'Delete' %}
+                    <i class="fa fa-ban"></i></button>
+                </form>
+              </div>
+            </div>
+                {% endif %}
+          {% endfor %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

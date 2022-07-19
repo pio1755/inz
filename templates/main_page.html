@@ -1,8 +1,32 @@
 {% extends 'base.html' %}
 {% load static i18n %}
 
+
+
   {% block content %}
 
-      xDDD
+      <div class="main-title">Strona główna</div>
+      <div class="box content-wrap">
+          <b>Autor:</b> Piotr Kosiński<br>
+                    <b>Promotor:</b> Stanisław Drozda<br>
+          <b>Kierunek:</b> Informatyka<br>
+          <b>Specjalizacja:</b> Inżynieria Systemów Informatycznych<br>
+<b>Tytuł pracy:</b> Aplikacja wspomagająca planistę przy tworzeniu planów zajęć<br>
+      </div>
 
   {% endblock %}
+
+{% block  foo %}
+
+    <div class="footer">
+  <p>created by: Piotr Kosiński</p>
+</div>
+    {% endblock %}
+{% block extra_js %}
+  <!-- Scheduler JS -->
+  <script src="{% static 'jquery-schedule/dist/jquery.schedule.js' %}"></script>
+  <script src="{% static 'js/user_panel.js' %}"></script>
+  {% block user_panel_extra_js %}
+  {% endblock user_panel_extra_js %}
+{% endblock extra_js %}
+

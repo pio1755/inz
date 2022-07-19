@@ -19,7 +19,7 @@ from .models import CustomUser
 class CustomUserAdmin(UserAdmin):
     list_display = (
         'username', 'email', 'first_name', 'last_name', 'is_staff',
-        'is_planner', 'is_teacher',
+        'is_planner', 'is_teacher', 'is_student',
     )
     fieldsets = (
         (None, {
@@ -30,16 +30,13 @@ class CustomUserAdmin(UserAdmin):
         }),
         ('Permissions', {
             'fields': (
-                'is_active', 'is_staff', 'is_superuser',
+                'is_active', 'is_staff', 'is_planner', 'is_teacher', 'is_student', 'is_superuser',
                 'groups', 'user_permissions'
             )
         }),
         ('Important dates', {
             'fields': ('last_login', 'date_joined')
         }),
-        ('Additional info', {
-            'fields': ('is_planner', 'is_teacher')
-        })
     )
 
     add_fieldsets = (
@@ -59,49 +56,9 @@ class CustomUserAdmin(UserAdmin):
             'fields': ('last_login', 'date_joined')
         }),
         ('Additional info', {
-            'fields': ('is_planner', 'is_teacher')
+            'fields': ('is_planner', 'is_teacher', 'is_student')
         })
     )
 
 
 admin.site.register(CustomUser, CustomUserAdmin)
-
-#
-# class UserCreationFormExtended(UserCreationForm):   # noqa: D101
-#     def __init__(self, *args, **kwargs):   # noqa: D107
-#         super(UserCreationFormExtended, self).__init__(*args, **kwargs)
-#         self.fields['email'] = forms.EmailField(label=_('E-mail'), max_length=75)
-#
-#
-# @admin.register(CustomUser)
-# class CustomUserAdmin(UserAdmin):  # noqa: D101
-#     add_form = UserCreationFormExtended
-#     list_display = [
-#         'username',
-#         'first_name',
-#         'last_name',
-#         'is_active',
-#     ]
-#     fieldsets = (
-#         (None, {'fields': ('username', 'password')}),
-#         (_('Personal info'), {'fields': ('first_name', 'last_name', 'birthday_date')}),
-#         (_('Permissions'), {
-#             'fields': (
-#                 'is_active',
-#                 'is_staff',
-#                 'is_planner',
-#                 'is_superuser',
-#                 'is_banned',
-#                 'groups',
-#                 'user_permissions',
-#             ),
-#         }),
-#         (_('Important dates'), {'fields': ('last_login', 'date_joined')}),
-#     )
-#
-#     add_fieldsets = (
-#         (None, {
-#             'classes': ('wide',),
-#             'fields': ('username', 'password1', 'password2'),
-#         }),
-#     )

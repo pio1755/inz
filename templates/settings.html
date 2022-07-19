@@ -3,22 +3,46 @@
 
   {% block content %}
 
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="{% static 'css/naviset.css' %}" rel="stylesheet">
+
+
       <div class="navi">
 
 <ul>
-    <li><a class="active" href="{% url 'settings' %}">{% trans 'Settings' %}</a></li>
-    <li><a href="{% url 'settings' %}">{% trans 'Settings' %}</a></li>
+    <li><a href="{% url 'user_profile' %}">{% trans 'User Profile' %}</a></li>
+   {% if user.is_planner or user.is_superuser %}
+    <button class="dropdown-btn">{% trans 'Planner Panel' %}</button>
+  <div class="dropdown-container">
+      <li><a href="{% url 'class_panel' %}">{% trans 'Class Panel' %}</a></li>
+            <li><a href="{% url 'uic_panel' %}">{% trans 'Class Student Panel' %}</a></li>
+      <li><a href="{% url 'room_panel' %}">{% trans 'Rooms Panel' %}</a></li>
+      <li><a href="{% url 'lesson_panel' %}">{% trans 'Lessons Panel' %}</a></li>
+  </div>
+    {% endif %}
+
         <li><a href="/admin">{% trans 'Admin Panel' %}</a></li>
+
+<script src="{% static 'js/smenu.js' %}"></script>
+
+
 </ul>
       </div>
 
       <div class="field">
 
+  {% block settings_content %}
 
-xdddd
 
-
+  {% endblock %}
       </div>
 
 
   {% endblock %}
+{% block foo %}
+
+    <div class="footer">
+  <p>created by: Piotr Kosiński</p>
+</div>
+{% endblock %}
