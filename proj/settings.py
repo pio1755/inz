@@ -178,11 +178,11 @@ LOCALE_PATHS = [
 ]
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'apps_static')
 
-# STATICFILES_FINDERS = (
-#     'django.contrib.staticfiles.finders.FileSystemFinder',
-#     'django.contrib.staticfiles.finders.AppDirectoriesFinder',)
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',)
 
 
 MEDIA_URL = '/media/'
