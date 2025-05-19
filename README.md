@@ -1,1 +1,1 @@
-"# inz" 
+Aplikacja do pracy inżynierskiej
