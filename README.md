@@ -1,3 +1,10 @@
+# Aplikacja do tworzenia planu zajęć
+
+## ✅ Wymagania
+
+- Python **3.8**
+- pip
+
 ## 🚀 Instrukcja uruchomienia aplikacji
 
 Aby uruchomić aplikację lokalnie, wykonaj poniższe kroki:
@@ -11,8 +18,7 @@ pip install -r requirements.txt
 ### 2️⃣ Przygotowanie migracji bazy danych:
 
 ```bash
-python manage.py makemigrations accounts
-python manage.py makemigrations proj
+
 python manage.py migrate
 ```
 
