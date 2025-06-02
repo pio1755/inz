@@ -1,5 +1,6 @@
 import datetime
 
+from django.utils import timezone
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.db.models import SET_NULL
@@ -63,13 +64,13 @@ class Lessons(models.Model):
         _('Date start'),
         blank=True,
         null=False,
-        default=datetime.datetime.now()
+        default=timezone.now
     )
     Date_stop = models.DateTimeField(
         _('Date stop'),
         blank=True,
         null=False,
-        default=datetime.datetime.now()
+        default=timezone.now
     )
     Nauczyciel = models.ForeignKey(
         CustomUser,
