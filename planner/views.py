@@ -227,6 +227,7 @@ def uic_delete(request, pk):  # noqa: D103
 
     return render(request, 'settings/plannerpanel/UserInClass/uic_list.html', {'cl': cl})
 
+
 class AllSchedulersView(TemplateView):  # noqa: D101
     template_name = 'plan.html'
     model = Lessons

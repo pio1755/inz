@@ -1,0 +1,32 @@
+{
+  "name": "package.json",
+  "version": "1.0.0",
+  "description": "\"# inz\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pio1755/inz.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pio1755/inz/issues"
+  },
+  "homepage": "https://github.com/pio1755/inz#readme",
+  "devDependencies": {
+    "@types/bootstrap": "^5.1.13",
+    "autoprefixer": "^7.1.2",
+    "babel-preset-es2015": "^6.24.1",
+    "babelify": "^7.3.0",
+    "browserify": "^14.4.0",
+    "node-sass": "^6.0.1",
+    "postcss-cli": "^4.1.0"
+  },
+  "dependencies": {
+    "arrobefr-jquery-calendar-bs4": "^1.0.3",
+    "bootstrap": "^5.1.3"
+  }
+}

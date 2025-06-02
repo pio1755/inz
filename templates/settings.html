@@ -21,9 +21,9 @@
       <li><a href="{% url 'lesson_panel' %}">{% trans 'Lessons Panel' %}</a></li>
   </div>
     {% endif %}
-
+{% if user.is_superuser %}
         <li><a href="/admin">{% trans 'Admin Panel' %}</a></li>
-
+{% endif %}
 <script src="{% static 'js/smenu.js' %}"></script>
 
 
