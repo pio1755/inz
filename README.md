@@ -18,7 +18,7 @@ pip install -r requirements.txt
 ### 2️⃣ Przygotowanie migracji bazy danych:
 
 ```bash
-
+python manage.py makemigrations
 python manage.py migrate
 ```
 
